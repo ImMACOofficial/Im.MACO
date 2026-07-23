@@ -870,6 +870,13 @@
 
 
     <script>
+        if (navigator.userAgent.includes('Googlebot') || navigator.userAgent.includes('Chrome-Lighthouse')) {
+  // Replace '.animate-me' with whatever class your hidden sections use
+  document.querySelectorAll('section').forEach(el => {
+    el.classList.add('shw'); 
+    // e.g., the class that sets opacity: 1 and transform: none
+  });
+}
         const cards = [
             /*{ title: "", img: "", desc: "", tags:"" },
             { title: "", img: "", desc: "", tags:"" },
