@@ -943,6 +943,15 @@
 
         sections.forEach(sec => obsrvr.observe(sec));
     </script>
+    <noscript>
+  <style>
+    /* If JS is disabled, turn off the hidden opacity entirely */
+    .section {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  </style>
+</noscript>
 </body>
 
 </html>
