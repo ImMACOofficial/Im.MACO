@@ -869,20 +869,19 @@
 
 
 
-    <script>
+<script>
+        // 1. Instantly check if Googlebot or Lighthouse is crawling
         if (navigator.userAgent.includes('Googlebot') || navigator.userAgent.includes('Chrome-Lighthouse')) {
-  // Replace '.animate-me' with whatever class your hidden sections use
-  document.querySelectorAll('section').forEach(el => {
-    el.classList.add('shw'); 
-    // e.g., the class that sets opacity: 1 and transform: none
-  });
-}
+            document.querySelectorAll('section').forEach(el => {
+                el.classList.add('shw'); 
+            });
+        }
+
         const cards = [
             /*{ title: "", img: "", desc: "", tags:"" },
             { title: "", img: "", desc: "", tags:"" },
             { title: "", img: "", desc: "", tags:"" }*/
         ]
-
 
         const cardsContainer = document.querySelector(".cards-con");
 
@@ -891,18 +890,17 @@
         } else {
             cards.forEach(card => {
                 cardsContainer.innerHTML += `
-    <div class="card">
-      <img src="${card.img}" alt="${card.title}">
-      <div class="card-body">
-        <h3>${card.title}</h3>
-        <p>${card.desc}</p>
-        <span>${card.tags}</span>
-        </div>
-    </div>
-    `;
+            <div class="card">
+              <img src="${card.img}" alt="${card.title}">
+              <div class="card-body">
+                <h3>${card.title}</h3>
+                <p>${card.desc}</p>
+                <span>${card.tags}</span>
+                </div>
+            </div>
+            `;
             });
         }
-
 
         const clients = [
             /*{ name: "", img: "", fb: "" },
@@ -913,25 +911,25 @@
         const clientFeedback = document.querySelector(".feedback-con");
         if (clients.length === 0) {
             clientFeedback.innerHTML = `
-    <div class="no-fb">
-        <p>No feedbacks.....</p>
-    </div>
-    `;
+            <div class="no-fb">
+                <p>No feedbacks.....</p>
+            </div>
+            `;
         } else {
             clients.forEach(client => {
                 clientFeedback.innerHTML += `
-            <div class="client-fb">
-                <p class="fb">"${client.fb}"</p>
-                <div class="person">
-                    <img src="${client.img}">
-                    <h4>${client.name}</h4>
-                </div>
-            </div>
-            `
+                    <div class="client-fb">
+                        <p class="fb">"${client.fb}"</p>
+                        <div class="person">
+                            <img src="${client.img}">
+                            <h4>${client.name}</h4>
+                        </div>
+                    </div>
+                    `
             });
         }
 
-
+        // 2. Normal user interaction animation handling
         const sections = document.querySelectorAll('section')
         const obsrvr = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -943,15 +941,18 @@
 
         sections.forEach(sec => obsrvr.observe(sec));
     </script>
+
     <noscript>
-  <style>
-    /* If JS is disabled, turn off the hidden opacity entirely */
-    .section {
-      opacity: 1 !important;
-      transform: none !important;
-    }
-  </style>
-</noscript>
+      <style>
+        /* FIXED: Removed the dot so it targets the HTML <section> tags */
+        section {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
+</body>
+</html>
 </body>
 
 </html>
